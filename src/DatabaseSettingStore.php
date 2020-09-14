@@ -106,7 +106,6 @@ class DatabaseSettingStore extends SettingStore
 	public function setConstraint(\Closure $callback)
 	{
 		$this->data = array();
-		$this->loaded = false;
 		$this->queryConstraint = $callback;
 	}
 

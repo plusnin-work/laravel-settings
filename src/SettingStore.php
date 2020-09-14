@@ -45,13 +45,6 @@ abstract class SettingStore
 	protected $unsaved = false;
 
 	/**
-	 * Whether the settings data are loaded.
-	 *
-	 * @var boolean
-	 */
-	protected $loaded = false;
-
-	/**
 	 * Default values.
 	 *
 	 * @var array
@@ -223,17 +216,12 @@ abstract class SettingStore
 
 	/**
 	 * Make sure data is loaded.
-	 *
-	 * @param $force Force a reload of data. Default false.
 	 */
-	public function load($force = false)
+	public function load()
 	{
-		if (!$this->loaded || $force) {
-			$this->data = $this->readData();
-            $this->persistedData = $this->data;
-            $this->data = array_merge($this->updatedData, $this->data);
-            $this->loaded = true;
-		}
+		$this->data = $this->readData();
+		$this->persistedData = $this->data;
+		$this->data = array_merge($this->updatedData, $this->data);
 	}
 
 	/**
